@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palo Rosa House · Casas en Puerto Iguazú</title>
+    <meta name="description" content="Dos casas enteras con pileta en Puerto Iguazú, Misiones. Reserva directa con Analía." />
+    <meta name="theme-color" content="#1f3127" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=Fraunces:opsz,wght@9..144,500&display=swap" />
+    <link rel="preload" as="image" href="img/cierre.webp" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- El logo de Palo Rosa: el mismo sello del estudio anterior, con trazos más gruesos para que se lea sobre el fondo oscuro -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="sello" viewBox="0 0 200 200">
+          <g class="sello-rayos" stroke="currentColor" stroke-width="2" stroke-linecap="round"></g>
+          <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="2" />
+          <circle cx="100" cy="100" r="57" fill="none" stroke="currentColor" stroke-width="1.2" />
+          <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 138 V86" />
+            <path d="M100 112 C92 104 86 100 78 99" />
+            <path d="M100 104 C108 96 114 93 122 92" />
+            <path d="M100 92 C96 84 94 78 95 70" />
+          </g>
+          <g fill="currentColor">
+            <ellipse cx="76" cy="96" rx="12" ry="7" transform="rotate(-12 76 96)" opacity=".85" />
+            <ellipse cx="124" cy="88" rx="12" ry="7" transform="rotate(10 124 88)" opacity=".85" />
+            <ellipse cx="96" cy="66" rx="10" ry="12" opacity=".85" />
+          </g>
+          <path d="M80 138 H120" stroke="currentColor" stroke-width="2" />
+        </symbol>
+        <symbol id="flecha" viewBox="0 0 20 20">
+          <path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="nav" id="nav">
+      <a class="logo" href="#inicio" aria-label="Palo Rosa House, inicio">
+        <svg class="logo-sello" aria-hidden="true"><use href="#sello" /></svg>
+        <span class="logo-nombre">Palo Rosa House</span>
+        <span class="logo-lugar">Puerto Iguazú</span>
+      </a>
+      <nav class="nav-links" aria-label="Menú principal">
+        <a href="#espacios">Espacios</a>
+        <a href="#casas">Las casas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <p class="nav-idioma">Idioma: Es</p>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú"><span></span><span></span></button>
+    </header>
+
+    <nav class="menu-movil" id="menu-movil" aria-label="Menú" hidden>
+      <a href="#espacios">Espacios</a>
+      <a href="#casas">Las casas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main>
+      <!-- 1. Portada: el sello del palo rosa es una ventana. Al cargar se dibuja y adentro aparece la casa;
+           al bajar, el círculo se abre como un iris hasta llenar la pantalla. -->
+      <section class="hero" id="inicio">
+        <div class="hero-pin">
+          <div class="hero-foto">
+            <img src="img/cierre.webp" alt="La pileta de noche con la galería y la casa iluminadas" fetchpriority="high" />
+            <div class="hero-velo"></div>
+          </div>
+
+          <svg class="hero-sello" viewBox="0 0 200 200" aria-hidden="true">
+            <g class="hs-rayos" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></g>
+            <circle class="hs-anillo" cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <circle class="hs-anillo" cx="100" cy="100" r="57" fill="none" stroke="currentColor" stroke-width=".8" />
+            <g class="hs-arbol">
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M100 138 V86" /><path d="M100 112 C92 104 86 100 78 99" />
+                <path d="M100 104 C108 96 114 93 122 92" /><path d="M100 92 C96 84 94 78 95 70" />
+                <path d="M80 138 H120" />
+              </g>
+              <g fill="currentColor" opacity=".85">
+                <ellipse cx="76" cy="96" rx="12" ry="7" transform="rotate(-12 76 96)" />
+                <ellipse cx="124" cy="88" rx="12" ry="7" transform="rotate(10 124 88)" />
+                <ellipse cx="96" cy="66" rx="10" ry="12" />
+              </g>
+            </g>
+          </svg>
+
+          <h1 class="hero-nombre">Palo Rosa House<span class="oculto">, casas en Puerto Iguazú</span></h1>
+
+          <p class="hero-intro">Dos casas enteras en Puerto Iguazú, Misiones.<br />Pileta, cocina, wifi y estacionamiento en la propiedad.</p>
+          <p class="hero-scroll" aria-hidden="true">Scroll para entrar</p>
+
+          <div class="hero-final">
+            <p class="hero-titulo">Casas con pileta para volver de las Cataratas</p>
+            <!-- TODO (PENDIENTES.md): número de WhatsApp de reservas -->
+            <a class="boton wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">Consultar fechas<span class="boton-flecha" aria-hidden="true"><svg><use href="#flecha" /></svg></span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Overview: la frase queda fija a la izquierda y la lista corre a la derecha -->
+      <section class="overview" aria-labelledby="ov-titulo">
+        <div class="ov-izq">
+          <p class="ov-kicker">Palo Rosa House</p>
+          <h2 id="ov-titulo" class="overview-frase gira">De la mañana en las Cataratas a la noche en la galería: lo que un viaje a Iguazú necesita.</h2>
+        </div>
+        <ol class="ov-lista">
+          <li><span class="ov-n">01</span><div><h3>Casa entera</h3><p>Se alquilan enteras: no compartís la casa con nadie. Llegás, dejás las cosas y es de ustedes.</p></div></li>
+          <li><span class="ov-n">02</span><div><h3>Pileta</h3><p>Las dos casas tienen pileta, para volver de las Cataratas con calor y meterse directo al agua.</p></div></li>
+          <li><span class="ov-n">03</span><div><h3>Estacionamiento</h3><p>En la propiedad. Salís temprano a los saltos y a la vuelta el auto duerme adentro.</p></div></li>
+          <li><span class="ov-n">04</span><div><h3>Cocina y wifi</h3><p>Cocina para no depender de salir a comer, y wifi en las dos. La Casa 1 suma un espacio de trabajo.</p></div></li>
+          <li><span class="ov-n">05</span><div><h3>Reserva directa</h3><p>Le escribís a Analía y arreglás todo con ella, sin la comisión de las plataformas.</p></div></li>
+        </ol>
+      </section>
+
+      <!-- 3. Espacios: igual a "Solutions" de Brant. Cada pantalla tiene su foto y su tarjeta fijas
+           dentro de un recorte: la siguiente sube como una cortina. La tarjeta crece de 0.7 a 1 y se va a 0.5. -->
+      <section class="sol" id="espacios" aria-labelledby="sol-titulo">
+        <h2 id="sol-titulo" class="titulo gira">Espacios</h2>
+        <div class="sol-paso">
+          <div class="sol-fijo">
+            <div class="sol-fondo"><img src="img/living.webp" alt="El living y comedor, con paredes de ladrillo, mesa de madera y sillón" loading="lazy" /></div>
+            <article class="sol-tarjeta">
+              <header><span>Espacios</span><span>1 / 3</span></header>
+              <h3>Living y comedor</h3>
+              <p class="sol-texto">Ladrillo, madera y una mesa grande para todos.</p>
+              <p class="sol-chips"><span>Living</span><span>Comedor</span><span>Wifi</span></p>
+            </article>
+          </div>
+        </div>
+        <div class="sol-paso">
+          <div class="sol-fijo">
+            <div class="sol-fondo"><img src="img/mesa-noche.webp" alt="La mesa larga de la galería de noche, con la hamaca y la pileta al fondo" loading="lazy" /></div>
+            <article class="sol-tarjeta">
+              <header><span>Espacios</span><span>2 / 3</span></header>
+              <h3>La galería</h3>
+              <p class="sol-texto">La mesa larga bajo techo, con la hamaca al lado.</p>
+              <p class="sol-chips"><span>Galería</span><span>Mesa larga</span><span>Hamaca</span></p>
+            </article>
+          </div>
+        </div>
+        <div class="sol-paso">
+          <div class="sol-fijo">
+            <div class="sol-fondo"><img src="img/hero-noche.webp" alt="La pileta de noche con las reposeras" loading="lazy" /></div>
+            <article class="sol-tarjeta">
+              <header><span>Espacios</span><span>3 / 3</span></header>
+              <h3>La pileta</h3>
+              <p class="sol-texto">Para volver de las Cataratas y meterse al agua.</p>
+              <p class="sol-chips"><span>Pileta</span><span>Reposeras</span><span>Jardín</span></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Las casas: dos fichas para comparar (la segunda sube desfasada, como los productos de Brant) -->
+      <section class="casas" id="casas" aria-labelledby="casas-titulo">
+        <div class="casas-cabeza">
+          <h2 id="casas-titulo" class="titulo gira">Las casas</h2>
+          <p class="casas-intro">Las dos se alquilan enteras, con pileta y estacionamiento en la propiedad. Elegí según cuántos son.</p>
+        </div>
+        <div class="casas-grilla">
+          <article class="casa">
+            <header class="casa-cabeza"><span class="casa-chip">Casa 1</span><span class="casa-lema">Para quien no corta del todo</span></header>
+            <p class="casa-huespedes"><span class="casa-num">5</span><span>huéspedes</span></p>
+            <dl class="casa-datos"><div><dt>Dormitorios</dt><dd>2</dd></div><div><dt>Camas</dt><dd>4</dd></div><div><dt>Baños</dt><dd>2</dd></div><div><dt>Pileta</dt><dd>Sí</dd></div><div><dt>Espacio de trabajo</dt><dd>Sí</dd></div><div><dt>Wifi</dt><dd>Sí</dd></div></dl>
+            <a class="boton wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20la%20Casa%201%20de%20Palo%20Rosa%20House.">Consultar por la Casa 1<span class="boton-flecha" aria-hidden="true"><svg><use href="#flecha" /></svg></span></a>
+          </article>
+          <article class="casa">
+            <header class="casa-cabeza"><span class="casa-chip">Casa 2</span><span class="casa-lema">Para el grupo que viaja junto</span></header>
+            <p class="casa-huespedes"><span class="casa-num">6</span><span>huéspedes</span></p>
+            <dl class="casa-datos"><div><dt>Dormitorios</dt><dd>2</dd></div><div><dt>Camas</dt><dd>4</dd></div><div><dt>Baños</dt><dd>1</dd></div><div><dt>Pileta</dt><dd>Privada</dd></div><div><dt>TV</dt><dd>Sí</dd></div><div><dt>Wifi</dt><dd>Sí</dd></div></dl>
+            <a class="boton wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20la%20Casa%202%20de%20Palo%20Rosa%20House.">Consultar por la Casa 2<span class="boton-flecha" aria-hidden="true"><svg><use href="#flecha" /></svg></span></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. Texto que se enciende sobre la foto -->
+      <section class="enciende-seccion" aria-label="La casa">
+        <div class="enciende-fija">
+          <img class="enciende-foto" src="img/living.webp" alt="" loading="lazy" />
+          <div class="enciende-caja">
+            <p class="enciende">Ladrillo, madera y una galería que mira a la pileta. Dos casas pensadas para volver de las Cataratas y quedarse: cocinar, tirarse al agua y que la noche sea de ustedes.</p>
+            <a class="boton wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">Consultar fechas<span class="boton-flecha" aria-hidden="true"><svg><use href="#flecha" /></svg></span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Cierre: pantalla partida, el texto en el panel verde y la pileta de día nítida -->
+      <section class="cierre" id="contacto" aria-labelledby="cierre-titulo">
+        <div class="cierre-panel">
+          <p class="cierre-chico">Reserva directa con Analía,<br />sin comisión de plataformas.</p>
+          <div class="cierre-abajo">
+            <h2 id="cierre-titulo" class="gira">Empecemos por las fechas.</h2>
+            <p class="cierre-texto">Contale cuándo vienen y cuántos son. Te contesta ella.</p>
+            <a class="boton wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">Escribir por WhatsApp<span class="boton-flecha" aria-hidden="true"><svg><use href="#flecha" /></svg></span></a>
+          </div>
+        </div>
+        <div class="cierre-foto-marco"><img class="cierre-foto" src="img/hero-dia.webp" alt="La pileta de día, vista desde la galería con la hamaca y la mesa" loading="lazy" /></div>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <div class="pie-cols">
+        <div>
+          <p class="pie-titulo">Descubrí</p>
+          <a href="#espacios">Espacios</a><a href="#casas">Las casas</a>
+        </div>
+        <div>
+          <p class="pie-titulo">Contacto</p>
+          <a class="wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">WhatsApp de Analía</a>
+        </div>
+        <div>
+          <p class="pie-titulo">Dónde</p>
+          <p>Puerto Iguazú<br />Misiones, Argentina</p>
+        </div>
+        <a class="pie-logo" href="#inicio" aria-label="Palo Rosa House, volver arriba">
+          <svg aria-hidden="true"><use href="#sello" /></svg>
+          <span>Palo Rosa House</span>
+        </a>
+      </div>
+      <div class="pie-base">
+        <p>© 2026 Palo Rosa House.</p>
+        <p>Puerto Iguazú · Misiones · Argentina</p>
+      </div>
+    </footer>
+  </body>
+</html>

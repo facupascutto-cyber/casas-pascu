@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palo Rosa House · Casas en Puerto Iguazú</title>
+    <meta name="description" content="Dos casas enteras con pileta en Puerto Iguazú, Misiones. Reserva directa con Analía." />
+    <meta name="theme-color" content="#F1EADF" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Alegreya+Sans:wght@400;500&display=swap" />
+    <link rel="preload" as="image" href="img/hero-dia.webp" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Sello: se define una vez y se usa en el encabezado y en el cierre -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="sello" viewBox="0 0 200 200">
+          <g class="sello-rayos" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+            <!-- los rayos los genera script.js para no repetir 48 líneas -->
+          </g>
+          <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="1" />
+          <circle cx="100" cy="100" r="57" fill="none" stroke="currentColor" stroke-width=".6" />
+          <!-- palo rosa estilizado: tronco alto y copa en tres ramos -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M100 138 V86" />
+            <path d="M100 112 C92 104 86 100 78 99" />
+            <path d="M100 104 C108 96 114 93 122 92" />
+            <path d="M100 92 C96 84 94 78 95 70" />
+          </g>
+          <g fill="currentColor">
+            <ellipse cx="76" cy="96" rx="12" ry="7" transform="rotate(-12 76 96)" opacity=".85" />
+            <ellipse cx="124" cy="88" rx="12" ry="7" transform="rotate(10 124 88)" opacity=".85" />
+            <ellipse cx="96" cy="66" rx="10" ry="12" opacity=".85" />
+          </g>
+          <path d="M80 138 H120" stroke="currentColor" stroke-width="1" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="top" id="top">
+      <a class="logo" href="#inicio" aria-label="Palo Rosa House, inicio">
+        <svg class="logo-sello" aria-hidden="true"><use href="#sello" /></svg>
+        <span class="logo-nombre">Palo Rosa House</span>
+        <span class="logo-lugar">Puerto Iguazú</span>
+      </a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="menu" id="menu" aria-label="Menú principal" hidden>
+      <ol>
+        <li><a href="#esto-es">Esto es Palo Rosa</a></li>
+        <li><a href="#las-casas">Las dos casas</a></li>
+        <li><a href="#un-dia">Un día acá</a></li>
+        <li><a href="#por-dentro">La casa por dentro</a></li>
+        <li><a href="#fechas">Consultar fechas</a></li>
+      </ol>
+      <p class="menu-pie">Puerto Iguazú · Misiones · Argentina</p>
+    </nav>
+
+    <!-- TODO (PENDIENTES.md): número de WhatsApp de reservas -->
+    <a class="pestana wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+      <span>Consultar fechas</span>
+    </a>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-fotos">
+          <img class="hero-img" src="img/hero-dia.webp" alt="De día: la galería con la mesa larga, la hamaca y la pileta al fondo" fetchpriority="high" />
+          <img class="hero-img" src="img/hero-noche.webp" alt="De noche: la pileta iluminada con las reposeras" fetchpriority="high" />
+        </div>
+        <div class="hero-copy">
+          <p class="hero-kicker">Puerto Iguazú · Misiones</p>
+          <h1 class="lineas">Entre la selva<br />y el agua quieta</h1>
+        </div>
+        <a class="hero-mas" href="#esto-es">Conocer más<span aria-hidden="true"></span></a>
+      </section>
+
+      <section class="split" id="esto-es" aria-labelledby="esto-titulo">
+        <figure class="split-foto revela">
+          <img src="img/galeria-sillones.webp" alt="La galería de ladrillo con dos sillones de mimbre y la mesa larga de madera" loading="lazy" />
+        </figure>
+        <div class="split-texto papel">
+          <h2 id="esto-titulo" class="lineas">Esto es<br />Palo Rosa House</h2>
+          <p>Dos casas enteras en Puerto Iguazú, cada una con su pileta. Ladrillo, madera y una galería que mira al jardín.</p>
+          <p>A la mañana salís a las Cataratas. A la tarde volvés a una casa que es solo de ustedes.</p>
+          <a class="btn" href="#las-casas">Las casas</a>
+        </div>
+      </section>
+
+      <section class="split split-inv" id="las-casas" aria-labelledby="casas-titulo">
+        <div class="split-texto papel">
+          <h2 id="casas-titulo" class="lineas">Las dos casas</h2>
+          <p>Se alquilan enteras, con pileta y estacionamiento en la propiedad.</p>
+          <div class="casas">
+            <article class="casa">
+              <p class="casa-num">5</p>
+              <div>
+                <h3>Casa 1</h3>
+                <p>2 dormitorios · 4 camas · 2 baños</p>
+                <p class="casa-extra">Wifi y espacio de trabajo, para quien no corta del todo.</p>
+              </div>
+            </article>
+            <article class="casa">
+              <p class="casa-num">6</p>
+              <div>
+                <h3>Casa 2</h3>
+                <p>2 dormitorios · 4 camas · 1 baño</p>
+                <p class="casa-extra">Pileta privada y TV, para el grupo que viaja junto.</p>
+              </div>
+            </article>
+          </div>
+          <p class="casas-pie">Huéspedes por casa</p>
+          <a class="btn" href="#fechas">Consultar fechas</a>
+        </div>
+        <figure class="split-foto revela">
+          <img src="img/jardin.webp" alt="La galería y el jardín, con la hamaca y la pileta al fondo" loading="lazy" />
+        </figure>
+      </section>
+
+      <section class="tabla papel" aria-labelledby="tabla-titulo">
+        <h2 id="tabla-titulo" class="titulo-grande lineas">Lo que tienen<br />las dos casas</h2>
+        <ul class="tabla-grilla">
+          <li><h3>Casa entera</h3><p>Se alquilan enteras: no compartís la casa con nadie.</p></li>
+          <li><h3>Pileta</h3><p>Las dos tienen pileta, para volver de las Cataratas y meterse al agua.</p></li>
+          <li><h3>Estacionamiento</h3><p>En la propiedad. Salís temprano y el auto duerme adentro.</p></li>
+          <li><h3>Cocina</h3><p>Para cocinar en casa y no depender de salir a comer.</p></li>
+          <li><h3>Wifi</h3><p>En las dos. La Casa 1 suma un espacio de trabajo.</p></li>
+          <li><h3>Reserva directa</h3><p>Le escribís a Analía y arreglás con ella, sin comisión de plataformas.</p></li>
+        </ul>
+      </section>
+
+      <section class="banda" aria-label="Las dos aguas">
+        <p class="banda-chica">A la mañana</p>
+        <p class="banda-grande">La que ruge <span aria-hidden="true">—</span> la quieta</p>
+        <p class="banda-chica">A la tarde</p>
+      </section>
+
+      <section class="escena" id="un-dia" aria-labelledby="dia-titulo">
+        <div class="escena-fija">
+          <div class="escena-marco">
+            <img class="activa" src="img/galeria-sillones.webp" alt="Los sillones de mimbre en la galería" loading="lazy" />
+            <img src="img/entrada.webp" alt="La entrada con el portón de la cochera" loading="lazy" />
+            <img src="img/hero-dia.webp" alt="La pileta de día, vista desde la galería" loading="lazy" />
+            <img src="img/mesa-noche.webp" alt="La mesa larga de la galería de noche" loading="lazy" />
+            <img src="img/pileta-noche.webp" alt="La pileta de noche con la galería iluminada" loading="lazy" />
+          </div>
+          <div class="escena-tarjeta">
+            <header>
+              <h2 id="dia-titulo">Un día en Palo Rosa</h2>
+              <p class="escena-cuenta" aria-hidden="true"><span class="escena-n">1</span> / 5</p>
+            </header>
+            <ol class="escena-pasos">
+              <li class="activo"><time>07:30</time><p>Mate en la galería, la selva despertando.</p></li>
+              <li><time>09:00</time><p>Cataratas. Salís temprano, el auto queda adentro.</p></li>
+              <li><time>15:00</time><p>Vuelta a casa. El agua quieta.</p></li>
+              <li><time>20:00</time><p>Mesa larga en la galería.</p></li>
+              <li><time>23:00</time><p>Silencio. La casa entera para ustedes.</p></li>
+            </ol>
+            <div class="escena-barra" aria-hidden="true"><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="directo papel" aria-labelledby="directo-titulo">
+        <h2 id="directo-titulo" class="directo-kicker">Reservá directo</h2>
+        <p class="directo-texto enciende">Son las mismas casas que ves en las plataformas. Reservando acá no pagás su comisión. Del otro lado está Analía: le escribís, te contesta ella, y con ella arreglás todo.</p>
+      </section>
+
+      <section class="dentro" id="por-dentro" aria-labelledby="dentro-titulo">
+        <header class="dentro-cabeza">
+          <h2 id="dentro-titulo" class="lineas">La casa por dentro</h2>
+        </header>
+        <div class="dentro-grilla">
+          <figure class="foto ancha revela"><img src="img/living.webp" alt="Living y comedor con sillón, mesa de madera y paredes de ladrillo" loading="lazy" /><figcaption><span>Living</span>Ladrillo y madera</figcaption></figure>
+          <figure class="foto revela"><img src="img/mesa-larga.webp" alt="Galería techada con mesa larga de madera y sillones de mimbre" loading="lazy" /><figcaption><span>Galería</span>La mesa larga</figcaption></figure>
+          <figure class="foto revela"><img src="img/mesa-hamaca.webp" alt="La galería con techo de madera, la mesa y la hamaca" loading="lazy" /><figcaption><span>Galería</span>Techo de madera</figcaption></figure>
+          <figure class="foto revela"><img src="img/dormitorio-cucheta.webp" alt="Dormitorio con cucheta y cama simple" loading="lazy" /><figcaption><span>Dormitorio</span>Cucheta y simple</figcaption></figure>
+          <figure class="foto revela"><img src="img/bano.webp" alt="Baño con paredes verdes y cortina de ducha" loading="lazy" /><figcaption><span>Baño</span>Verde selva</figcaption></figure>
+          <figure class="foto revela"><img src="img/pileta-noche.webp" alt="La pileta de noche con la galería iluminada" loading="lazy" /><figcaption><span>De noche</span>La pileta</figcaption></figure>
+          <figure class="foto revela"><img src="img/entrada.webp" alt="La entrada con el portón de la cochera" loading="lazy" /><figcaption><span>Entrada</span>El auto queda adentro</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="cierre papel" id="fechas" aria-labelledby="fechas-titulo">
+        <svg class="cierre-sello" aria-hidden="true"><use href="#sello" /></svg>
+        <h2 id="fechas-titulo" class="lineas">¿Qué fechas tenían en mente?</h2>
+        <p>Reserva directa con Analía, sin comisión de plataformas. Contale cuándo vienen y cuántos son.</p>
+        <a class="btn btn-lleno wa" href="https://wa.me/?text=Hola%20Anal%C3%ADa%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20Palo%20Rosa%20House.">Escribir por WhatsApp</a>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <p>Palo Rosa House</p>
+      <p>Puerto Iguazú · Misiones · Argentina</p>
+    </footer>
+  </body>
+</html>
