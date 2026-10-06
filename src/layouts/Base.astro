@@ -1,0 +1,49 @@
+---
+import '@fontsource/alegreya-sans/400.css';
+import '@fontsource/alegreya-sans/500.css';
+import '../styles/global.css';
+import { linkWhatsApp } from '../data/sitio';
+
+interface Props {
+  lang: 'es' | 'pt' | 'en';
+  titulo: string;
+  descripcion: string;
+  ruta: string; // ruta sin prefijo de idioma, ej. "/" o "/casas/casa-1/"
+  textoWhatsApp: string;
+  etiquetaWhatsApp: string;
+}
+
+const { lang, titulo, descripcion, ruta, textoWhatsApp, etiquetaWhatsApp } = Astro.props;
+const idiomas = ['es', 'pt', 'en'] as const;
+const url = (l: string) => new URL(`/${l}${ruta}`, Astro.site).href;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={url(lang)} />
+    {idiomas.map((l) => <link rel="alternate" hreflang={l} href={url(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={url('es')} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0e1517" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <a class="marca" href={`/${lang}/`}>Palo Rosa House</a>
+      <nav class="idiomas" aria-label="Idioma">
+        {idiomas.map((l) => (
+          <a href={`/${l}${ruta}`} hreflang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>{l}</a>
+        ))}
+      </nav>
+    </header>
+
+    <slot />
+
+    <a class="wa wa--fija" href={linkWhatsApp(textoWhatsApp)} data-wa-fija>{etiquetaWhatsApp}</a>
+  </body>
+</html>

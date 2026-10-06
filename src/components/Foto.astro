@@ -1,0 +1,36 @@
+---
+// Muestra una foto real de /fotos si existe; si no, un placeholder que dice qué foto falta.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  carpeta: 'casa-1' | 'casa-2' | 'iguazu';
+  archivo?: string;
+  pide: string;
+  alt?: string;
+  sizes?: string;
+  prioridad?: boolean;
+  class?: string;
+}
+
+const { carpeta, archivo, pide, alt = '', sizes = '100vw', prioridad = false, class: clase = '' } = Astro.props;
+
+const fotos = import.meta.glob<{ default: ImageMetadata }>('/fotos/**/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG}');
+const ruta = archivo ? `/fotos/${carpeta}/${archivo}` : undefined;
+const src = ruta && fotos[ruta] ? (await fotos[ruta]()).default : undefined;
+---
+{src ? (
+  <Image
+    src={src}
+    alt={alt}
+    widths={[480, 800, 1200, 1600, 2200]}
+    sizes={sizes}
+    loading={prioridad ? 'eager' : 'lazy'}
+    fetchpriority={prioridad ? 'high' : 'auto'}
+    class:list={['foto', clase]}
+  />
+) : (
+  <div class:list={['foto', 'foto--pendiente', clase]} data-carpeta={carpeta} role="img" aria-label={alt || pide}>
+    <p class="foto__nota">Foto pendiente · fotos/{carpeta}<br />{pide}</p>
+  </div>
+)}

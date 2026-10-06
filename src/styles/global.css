@@ -1,0 +1,216 @@
+/* Paleta provisoria hasta tener las fotos reales (ver PENDIENTES.md). */
+:root {
+  --bg: #e8eff2;
+  --ink: #16292d;
+  --acento: #b4432a;      /* tierra colorada: solo para WhatsApp */
+  --acento-hover: #9a3820;
+  --sobre-foto: #f4f7f7;
+  --pendiente-ruge: #2c3a37;
+  --pendiente-quieta: #35525c;
+  --pendiente: #7d8b8e;
+  --gutter: 1.25rem;
+  --fuente: 'Alegreya Sans', 'Gill Sans', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fuente);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-variant-numeric: lining-nums;
+}
+
+h1, h2, h3, p { margin: 0; font-weight: 500; }
+p { font-weight: 400; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* Fotos y placeholders */
+.foto { width: 100%; height: 100%; object-fit: cover; }
+.foto--pendiente {
+  position: relative;
+  background: var(--pendiente);
+  color: var(--sobre-foto);
+}
+.foto--pendiente[data-carpeta='iguazu'] { background: var(--pendiente-ruge); }
+.foto--pendiente[data-carpeta^='casa'] { background: var(--pendiente-quieta); }
+.foto__nota {
+  position: absolute;
+  left: var(--gutter);
+  bottom: var(--gutter);
+  max-width: 26rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+/* WhatsApp: el único color de acento */
+.wa {
+  display: inline-block;
+  padding: 0.85rem 1.4rem;
+  background: var(--acento);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.wa:hover { background: var(--acento-hover); }
+.wa--fija {
+  position: fixed;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  z-index: 10;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
+}
+.wa--fija[hidden] { display: none; }
+
+/* Cabecera sobre el hero */
+.cabecera {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--gutter);
+  color: var(--sobre-foto);
+}
+.marca { font-weight: 500; font-size: 1.2rem; text-decoration: none; }
+.idiomas { display: flex; gap: 0.9rem; }
+.idiomas a { text-decoration: none; opacity: 0.75; }
+.idiomas a[aria-current='page'] { opacity: 1; text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* Hero: mitad arriba y mitad abajo en mobile, lado a lado en desktop */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100svh;
+  min-height: 34rem;
+  color: var(--sobre-foto);
+}
+.hero__agua { position: relative; overflow: hidden; }
+.hero__agua--ruge .foto__nota { bottom: auto; top: 4rem; }
+.hero__texto {
+  position: absolute;
+  inset: 50% 0 auto;
+  translate: 0 -50%;
+  padding: 0 var(--gutter);
+  text-align: center;
+  text-shadow: 0 1px 18px rgb(0 0 0 / 0.45);
+}
+.hero h1 {
+  font-size: clamp(3.5rem, 17vw, 10rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.hero__texto p {
+  margin: 0.6rem auto 1.6rem;
+  max-width: 22ch;
+  font-size: clamp(1.2rem, 4.6vw, 1.6rem);
+  line-height: 1.3;
+}
+.hero .wa { text-shadow: none; }
+
+/* Un día en Palo Rosa House */
+.dia__titulo {
+  padding: 4.5rem var(--gutter) 0;
+  font-size: 1.15rem;
+}
+.momento {
+  display: grid;
+  grid-template-rows: 62svh auto;
+  min-height: 100svh;
+}
+.momento__foto { overflow: hidden; }
+.momento__texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem var(--gutter) 4.5rem;
+}
+.momento__hora {
+  font-size: clamp(5.5rem, 30vw, 15rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.momento__frase {
+  margin-top: 1.1rem;
+  max-width: 24ch;
+  font-size: clamp(1.4rem, 5.5vw, 2.1rem);
+  line-height: 1.25;
+}
+.momento__nota {
+  margin-top: 1.2rem;
+  max-width: 38ch;
+  font-size: 1rem;
+  opacity: 0.75;
+}
+
+/* Cierre: las casas, reserva directa y consulta */
+.cierre-noche { padding-bottom: 6rem; }
+.cierre-noche h2 { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.05; letter-spacing: -0.01em; }
+
+.casas { padding: 6rem var(--gutter) 0; }
+.casas__intro { margin-top: 1rem; max-width: 40ch; }
+.casas__lista { display: grid; gap: 3.5rem; margin-top: 2.5rem; }
+.casa__foto {
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin: 0 calc(var(--gutter) * -1) 1.2rem;
+  overflow: hidden;
+}
+.casa h3 { font-size: 1.75rem; }
+.casa h3 a { text-decoration: none; }
+.casa__diferencia { margin-top: 0.4rem; font-size: 1.25rem; max-width: 34ch; }
+.casa__datos { margin-top: 0.8rem; max-width: 46ch; opacity: 0.75; font-size: 1rem; }
+.casa__link { display: inline-block; margin-top: 1rem; text-underline-offset: 0.3em; }
+
+.directo { padding: 7rem var(--gutter) 0; }
+.directo__texto { display: grid; gap: 1rem; margin-top: 1.2rem; max-width: 40ch; font-size: 1.25rem; }
+
+.consulta { padding: 7rem var(--gutter) 0; }
+.consulta p { margin: 1rem 0 1.6rem; }
+
+.pie {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 7rem;
+  padding: 0 var(--gutter);
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 2.5rem; }
+
+  .hero { grid-template-rows: none; grid-template-columns: 1fr 1fr; }
+  .hero__agua--ruge .foto__nota { top: auto; bottom: var(--gutter); }
+  .hero__texto { inset: 50% 0 auto; }
+
+  .momento {
+    grid-template-rows: none;
+    grid-template-columns: 7fr 5fr;
+    height: 100svh;
+    min-height: 40rem;
+  }
+  .momento--espejo { grid-template-columns: 5fr 7fr; }
+  .momento--espejo .momento__foto { order: 2; }
+  .momento__texto { padding: 3rem var(--gutter); }
+  .momento__hora { font-size: clamp(7rem, 13vw, 14rem); }
+
+  .casas__lista { grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .casa__foto { margin: 0 0 1.4rem; }
+
+  .directo, .consulta, .casas { max-width: 80rem; margin: 0 auto; }
+}
